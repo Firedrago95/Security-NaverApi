@@ -23,9 +23,11 @@ public class NaverLoginController {
 
     @GetMapping("/login")
     public String loginForm(Model model) {
+        String uuid = UUID.randomUUID().toString();
+        log.info("state = {}", uuid);
         model.addAttribute("naverClientId", naverApi.getNaverClientId());
         model.addAttribute("naverRedirectUri", naverApi.getNaverRedirectUri());
-        model.addAttribute("state", UUID.randomUUID().toString());
+        model.addAttribute("state", uuid);
         return "loginForm";
     }
 
